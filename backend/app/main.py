@@ -11,7 +11,8 @@ app = FastAPI(
 # CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # React dev server
+    # allow_origins=["http://localhost:3000"],  # Old local dev specific
+    allow_origins=["*"],  # Allow all origins for demo deployment
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
