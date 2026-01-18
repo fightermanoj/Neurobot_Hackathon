@@ -3,7 +3,16 @@ Run all worker simulators for all stations simultaneously
 """
 import threading
 import time
-from worker_simulator import WorkerSimulator
+import sys
+import os
+
+# Ensure we can import from local directory even when imported from elsewhere
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+try:
+    from worker_simulator import WorkerSimulator
+except ImportError:
+    from simulators.worker_simulator import WorkerSimulator
 
 def run_station_workers(station_id, num_workers, batch_number="BATCH_001"):
     """Run all workers for a specific station"""
