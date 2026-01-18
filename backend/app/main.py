@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import auth, users, dashboard, batches, stations, workers, voice, analytics
+from app.routers import auth, users, dashboard, batches, stations, workers, voice, analytics, simulator
 
 app = FastAPI(
     title="Production Visibility System",
@@ -27,6 +27,7 @@ app.include_router(stations.router, prefix="/api/stations", tags=["Stations"])
 app.include_router(workers.router, prefix="/api/workers", tags=["Workers"])
 app.include_router(voice.router, prefix="/api/voice", tags=["Voice Commands"])
 app.include_router(analytics.router, prefix="/api/analytics", tags=["Analytics"])
+app.include_router(simulator.router, prefix="/api/simulator", tags=["Simulator"])
 
 @app.get("/")
 def read_root():

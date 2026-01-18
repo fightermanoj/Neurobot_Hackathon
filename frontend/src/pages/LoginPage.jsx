@@ -27,6 +27,32 @@ const LoginPage = () => {
     }
   };
 
+  // Demo Login Handler
+  const handleDemoLogin = async (role) => {
+    let demoEmail = '';
+    let demoPass = '';
+    if (role === 'admin') {
+      demoEmail = 'admin@lakshmi.com';
+      demoPass = 'admin123';
+    } else if (role === 'owner') {
+      demoEmail = 'rajesh@lakshmi.com';
+      demoPass = 'owner123';
+    } else if (role === 'manager') {
+      demoEmail = 'suresh@lakshmi.com';
+      demoPass = 'manager123';
+    }
+    
+    setLoading(true);
+    try {
+      await login(demoEmail, demoPass);
+      navigate('/dashboard');
+    } catch (err) {
+      setError('Demo login failed.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="login-page">
       <div className="login-container">
@@ -38,6 +64,12 @@ const LoginPage = () => {
         <form onSubmit={handleSubmit} className="login-form">
           <h2>Sign In</h2>
           
+          <div className="demo-buttons" style={{ display: 'flex', gap: '10px', marginBottom: '20px', justifyContent: 'center' }}>
+            <button type="button" onClick={() => handleDemoLogin('admin')} className="demo-btn">Demo Admin</button>
+            <button type="button" onClick={() => handleDemoLogin('owner')} className="demo-btn">Demo Owner</button>
+            <button type="button" onClick={() => handleDemoLogin('manager')} className="demo-btn">Demo Manager</button>
+          </div>
+
           {error && (
             <div className="error-message">
               ⚠️ {error}
