@@ -6,13 +6,17 @@ import time
 import sys
 import os
 
-# Ensure we can import from local directory even when imported from elsewhere
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
 try:
-    from worker_simulator import WorkerSimulator
-except ImportError:
+    # Try importing as a module first (production)
     from simulators.worker_simulator import WorkerSimulator
+except ImportError:
+    try:
+        # Try local import (development/script)
+        from worker_simulator import WorkerSimulator
+    except ImportError:
+        # Fallback for weird path issues
+        sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+        from worker_simulator import WorkerSimulator
 
 def run_station_workers(station_id, num_workers, batch_number="BATCH_001"):
     """Run all workers for a specific station"""

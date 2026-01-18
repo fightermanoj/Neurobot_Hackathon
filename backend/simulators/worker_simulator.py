@@ -1,10 +1,16 @@
 import requests
 import time
 import random
+import os
 from datetime import datetime
 
 # Configuration
-API_BASE_URL = "http://localhost:8000/api"
+# Use Render's PORT provided in env, default to 8000 for local
+port = os.environ.get("PORT", "8000")
+# If running inside the container, we can use localhost. 
+# But prefer the public URL if provided, or localhost if internal.
+API_BASE_URL = f"http://127.0.0.1:{port}/api"
+
 WORKERS_PER_STATION = {
     "STATION_1": 5,
     "STATION_2": 8,
