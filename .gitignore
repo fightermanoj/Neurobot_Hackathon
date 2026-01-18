@@ -1,0 +1,7 @@
+backend/DEMO_SETUP.md
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+.env
+.DS_Store
