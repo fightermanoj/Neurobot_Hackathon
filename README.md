@@ -1,4 +1,4 @@
-Here’s a clean, hackathon-ready formatted version of your text:
+
 
 
 ---
