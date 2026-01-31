@@ -77,11 +77,3 @@ Designed for quick testing and hackathon evaluation
 
 
 ---
-
-If you want, I can also:
-
-Convert this into a README.md
-
-Rewrite it as a hackathon submission description
-
-Shorten it into a 1-minute demo pitch
